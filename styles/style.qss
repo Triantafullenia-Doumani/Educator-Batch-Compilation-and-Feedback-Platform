@@ -175,3 +175,4 @@ QGroupBox::title {
   subcontrol-origin: margin;
   subcontrol-position: top center;
 }
+

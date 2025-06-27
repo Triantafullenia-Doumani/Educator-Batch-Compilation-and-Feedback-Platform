@@ -1,0 +1,17 @@
+0 begin_block func _ _
+1 + a 1 T_1
+2 := T_1 _ c
+3 + c a T_2
+4 := T_2 _ b
+5 out b _ _
+6 ret c _ _
+7 end_block func _ _
+8 begin_block main _ _
+9 inp a _ _
+10 par a CV _
+11 par T_3 RET _
+12 call func _ _
+13 := func _ b
+14 out b _ _
+15 halt _ _ _
+16 end_block main _ _

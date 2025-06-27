@@ -4,17 +4,17 @@ from src.views.main_window import MainWindow
 from src.controllers.buttons_controller import ButtonsController
 
 def main():
+    print("main() started")
     app = QApplication(sys.argv)
-    # Load stylesheet
+    # try to load your QSS but ignore errors
     try:
         with open("styles/style.qss", "r") as f:
             app.setStyleSheet(f.read())
     except FileNotFoundError:
-        print("Warning: style.qss not found, running without stylesheet.")
-
-    # Instantiate UI and controller
+        pass
     window = MainWindow()
-    ButtonsController(window)
+    controller = ButtonsController(window)
+    window.controller = controller  # attach to window, for lifetime
     window.show()
     sys.exit(app.exec())
 

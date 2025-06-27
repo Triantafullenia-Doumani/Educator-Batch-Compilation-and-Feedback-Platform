@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QMainWindow
+# src/views/main_window.py
+from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout
 from src.views.buttons import ButtonsView
 
 class MainWindow(QMainWindow):
@@ -6,10 +7,11 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Professor Batch Grader")
         self.resize(800, 600)
-        # UI component
-        self.buttons_view = ButtonsView(self)
-        self.setCentralWidget(self.buttons_view)
 
-# src/views/buttons.py
-from PyQt6.QtWidgets import QWidget, QPushButton, QLineEdit, QLabel, QSpinBox, QFileDialog, QTextEdit, QVBoxLayout, QHBoxLayout
-from PyQt6.QtCore import pyqtSignal
+        container = QWidget()
+        layout = QVBoxLayout(container)
+
+        self.buttons_view = ButtonsView()
+        layout.addWidget(self.buttons_view)
+
+        self.setCentralWidget(container)
