@@ -28,6 +28,7 @@
     <Compile Include="src\controllers\buttons_controller.py" />
     <Compile Include="src\controllers\__init__.py" />
     <Compile Include="src\services\batch_service.py" />
+    <Compile Include="src\services\batch_stats_service.py" />
     <Compile Include="src\services\compile_service.py" />
     <Compile Include="src\services\__init__.py" />
     <Compile Include="src\views\buttons.py" />

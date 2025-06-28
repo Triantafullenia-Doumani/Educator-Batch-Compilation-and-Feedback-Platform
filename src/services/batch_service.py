@@ -1,8 +1,8 @@
 # src/services/batch_service.py
 import logging
-from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 import subprocess
+import json
 
 # configure root logger
 logging.basicConfig(level=logging.DEBUG, 
@@ -21,75 +21,74 @@ class BatchService:
         except Exception:
             logging.exception("Failed to create results directory")
 
-    def _run_one(self, folder_path: str) -> dict:
-        print(f"_run_one called for folder: {folder_path}")
-        folder = Path(folder_path)
-        student = folder.name
-        logging.debug(f"Processing student folder: {folder}")
-
+    def _run_one(self, folder_path: str):
         try:
-            # find exactly one .py driver
+            folder = Path(folder_path)
             pys = [p for p in folder.glob("*.py") if p.is_file()]
             if len(pys) != 1:
-                msg = f"expected exactly one .py file, found {len(pys)}"
-                logging.warning(f"{student}: {msg}")
-                return {"student": student, "error": msg}
+                return {"student": folder.name, "error": f"expected exactly one .py file, found {len(pys)}"}
             compiler = pys[0]
-            logging.debug(f"{student}: using compiler {compiler.name}")
 
-            # gather sources (excluding the compiler itself)
             sources = []
             for ext in self.exts:
-                for src in folder.glob(f"*{ext}"):
-                    if src != compiler:
-                        sources.append(src)
-            logging.debug(f"{student}: found sources {', '.join(s.name for s in sources)}")
+                sources += [s for s in folder.glob(f"*{ext}") if s != compiler]
             if not sources:
-                msg = "no sources found"
-                logging.warning(f"{student}: {msg}")
-                return {"student": student, "error": msg}
+                return {"student": folder.name, "error": "no sources"}
 
-            # invoke the compiler script on each source
-            log = ""
+            results = []
             for src in sources:
-                logging.debug(f"{student}: running {compiler.name} on {src.name}")
-                proc = subprocess.run(
-                    ["python3", str(compiler), str(src)],
-                    capture_output=True, text=True
-                )
-                log += f"--- {src.name} (rc={proc.returncode}) ---\n"
-                log += proc.stdout + proc.stderr + "\n"
+                try:
+                    p = subprocess.run(
+                        ["python3", str(compiler), str(src)],
+                        capture_output=True, text=True, timeout=10  # 10 seconds max
+                    )
+                    results.append({
+                        "source": src.name,
+                        "returncode": p.returncode,
+                        "stdout": p.stdout,
+                        "stderr": p.stderr,
+                    })
+                except subprocess.TimeoutExpired:
+                    results.append({
+                        "source": src.name,
+                        "returncode": -1,
+                        "stdout": "",
+                        "stderr": "TIMEOUT"
+                    })
+                except Exception as e:
+                    results.append({
+                        "source": src.name,
+                        "returncode": -2,
+                        "stdout": "",
+                        "stderr": f"EXCEPTION: {e}"
+                    })
 
-            # write output file
-            out_file = self.results_dir / f"compiler_output_{student}.txt"
-            out_file.write_text(log, encoding="utf-8")
-            logging.info(f"{student}: wrote results to {out_file}")
-            return {"student": student, "output_file": str(out_file)}
 
+            out_file = self.results_dir / f"compiler_output_{folder.name}.json"
+            out_file.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+            return {"student": folder.name, "output_file": str(out_file)}
         except Exception as e:
-            logging.exception(f"{student}: unexpected error")
-            return {"student": student, "error": str(e)}
+            print(f"EXCEPTION in _run_one for {folder_path}: {e}")
+            return {"student": Path(folder_path).name, "error": f"EXCEPTION: {e}"}
 
     def execute_all(self) -> dict:
         print("execute_all called")
         logging.debug("Starting execute_all()")
-        folders = [p for p in self.root.iterdir() if p.is_dir()]
+        folders = [
+            p for p in self.root.iterdir()
+            if p.is_dir() and p.name != "results"
+        ]
         logging.debug(f"Student folders: {[p.name for p in folders]}")
         summary: dict[str, str] = {}
 
-        with ProcessPoolExecutor(max_workers=self.workers) as executor:
-            future_to_student = {
-                executor.submit(self._run_one, str(folder)): folder.name
-                for folder in folders
-            }
-            for fut in as_completed(future_to_student):
-                result = fut.result()
-                student = result["student"]
-                if "output_file" in result:
-                    summary[student] = result["output_file"]
-                else:
-                    summary[student] = f"ERROR: {result.get('error')}"
-                logging.debug(f"{student}: summary entry {summary[student]}")
+        for folder in folders:
+            result = self._run_one(str(folder))
+            student = result["student"]
+            if "output_file" in result:
+                summary[student] = result["output_file"]
+            else:
+                summary[student] = f"ERROR: {result.get('error')}"
+            logging.debug(f"{student}: summary entry {summary[student]}")
 
         logging.info("Finished all students")
         return summary
