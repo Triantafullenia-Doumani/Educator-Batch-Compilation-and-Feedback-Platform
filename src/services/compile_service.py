@@ -1,31 +1,50 @@
-# src/services/compile_service.py
 import subprocess
 from pathlib import Path
 
 class CompileService:
-    def compile(self, folder: Path, exts: list[str]) -> dict:
-        """
-        Locate all source files matching exts under `folder`,
-        invoke the only .py file on them, and return a dict
-        with stdout, stderr, and return code.
-        """
+    def compile(self, folder: Path, exts: list[str]) -> list[dict]:
+        # 1) Find the student’s compiler script
         py_files = [f for f in folder.glob("*.py") if f.is_file()]
         if len(py_files) != 1:
-            return {
-                "error": f"Expected exactly one .py file, found {len(py_files)}: {[f.name for f in py_files]}"
-            }
-        compiler = py_files[0]
+            return [{"error": f"Expected exactly one .py file, found {len(py_files)}"}]
+        compiler = py_files[0].name  # name only, since we'll cwd into folder
 
-        sources = []
-        for ext in exts:
-            sources += [f for f in folder.glob(f"*{ext}") if f != compiler]
+        # 2) Gather source files (all extensions except the compiler script)
+        sources = [
+            f for ext in exts
+            for f in folder.glob(f"*{ext}")
+            if f.name != compiler
+        ]
         if not sources:
-            return {"error": "No source files found."}
+            return [{"error": "No source files found."}]
 
-        args = ["python3", str(compiler)] + [str(s) for s in sources]
-        proc = subprocess.run(args, capture_output=True, text=True)
-        return {
-            "stdout": proc.stdout,
-            "stderr": proc.stderr,
-            "rc": proc.returncode
-        }
+        results = []
+        for src in sources:
+            # 3) Clean out any old artifacts
+            for pat in ("*.asm", "*.int"):
+                for old in folder.glob(pat):
+                    old.unlink(missing_ok=True)
+
+            # 4) Invoke the compiler in its own folder
+            print("HEHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH", folder)        
+            proc = subprocess.run(
+                ["python3", "compiler.py", src.name],
+                cwd=str(folder),              # <-- must be the student’s directory
+                capture_output=True,
+                text=True
+            )
+
+
+            # 5) Collect the newly minted .asm/.int files
+            outputs = [f.name for pat in ("*.asm", "*.int")
+                       for f in folder.glob(pat)]
+
+            results.append({
+                "source": src.name,
+                "returncode": proc.returncode,
+                "stdout": proc.stdout,
+                "stderr": proc.stderr,
+                "outputs": outputs,
+            })
+
+        return results
