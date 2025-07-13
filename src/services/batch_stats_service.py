@@ -7,7 +7,7 @@ class BatchStatsService:
     """
 
     def __init__(self, results_folder: Path):
-        self.results_folder = Path(results_folder)
+        self.results_folder ="results" / Path(results_folder)
 
     def gather_stats(self):
         print("gather_stats CALLED")
@@ -28,5 +28,4 @@ class BatchStatsService:
                 "total source files": total_files,
                 "successful": successful,
             }
-        print("Stats ready:", stats)
         return stats

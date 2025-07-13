@@ -1,66 +1,118 @@
-# src/services/batch_service.py
 from pathlib import Path
-import subprocess
 import json
+import subprocess
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 class BatchService:
-    def __init__(self, submissions_dir: str, exts: list[str], timeout: int = 30):
+    service_name = "compiler"
+    result_subdir = "compiler_results"
+
+    def __init__(
+        self,
+        submissions_dir: str,
+        exts: list[str],
+        timeout: int = 30,
+        workers: int = 1
+    ):
         self.root = Path(submissions_dir)
         self.exts = exts
         self.timeout = timeout
-        self.results_dir = self.root / "results"
+        self.workers = workers
+
+        # prepare results folder
+        self.results_dir = self.root / "results" / self.result_subdir
         self.results_dir.mkdir(parents=True, exist_ok=True)
 
-    def _run_one(self, folder: Path) -> dict:
-        # locate compiler script
-        py_files = list(folder.glob("*.py"))
+    def run_all(self) -> dict[str, str]:
+        """
+        Parallel over each student folder (skipping 'results'),
+        writes one report per student, and returns student -> report_path.
+        """
+        summary: dict[str, str] = {}
+        students = [
+            d for d in self.root.iterdir()
+            if d.is_dir() and d.name != "results" and not d.name.startswith(".")
+        ]
+
+        with ThreadPoolExecutor(max_workers=self.workers) as exe:
+            futures = {exe.submit(self.run_folder, stu): stu for stu in students}
+            for fut in as_completed(futures):
+                stu = futures[fut]
+                name = stu.name
+                try:
+                    report = fut.result()
+                    path = self.write_report(stu, report)
+                    summary[name] = path
+                except Exception as e:
+                    summary[name] = f"ERROR: {e}"
+        return summary
+
+    def run_folder(self, student_folder: Path) -> list[dict]:
+        """
+        Process a single student's folder:
+          - find exactly one .py compiler script
+          - gather all other source files matching self.exts
+          - clean out old .asm/.int artifacts
+          - run each source through run_file()
+        """
+        py_files = list(student_folder.glob("*.py"))
         if len(py_files) != 1:
-            return {"student": folder.name, "error": f"expected one .py, found {len(py_files)}"}
+            return [{"error": f"expected one .py, found {len(py_files)}"}]
         compiler = py_files[0].name
 
-        # find source files
-        sources = [f for ext in self.exts for f in folder.glob(f"*{ext}") if f.name != compiler]
+        sources = [
+            f for ext in self.exts
+            for f in student_folder.glob(f"*{ext}")
+            if f.name != compiler
+        ]
         if not sources:
-            return {"student": folder.name, "error": "no sources"}
+            return [{"error": "no source files"}]
 
-        results = []
         # clean old artifacts
         for pat in ("*.asm", "*.int"):
-            for old in folder.glob(pat):
+            for old in student_folder.glob(pat):
                 old.unlink(missing_ok=True)
 
+        results: list[dict] = []
         for src in sources:
-            try:
-                p = subprocess.run(
-                    ["python3", compiler, src.name],
-                    cwd=folder,
-                    capture_output=True,
-                    text=True,
-                    timeout=self.timeout
-                )
-                rc, out, err = p.returncode, p.stdout, p.stderr
-            except subprocess.TimeoutExpired as e:
-                rc, out, err = -1, e.stdout or "", (e.stderr or "") + "\nTIMEOUT"
+            results.append(self.run_file(student_folder, src, compiler))
+        return results
 
-            outputs = [f.name for pat in ("*.asm", "*.int") for f in folder.glob(pat)]
-            results.append({
-                "source": src.name,
-                "returncode": rc,
-                "stdout": out,
-                "stderr": err,
-                "outputs": outputs,
-            })
+    def run_file(self, student_folder: Path, src: Path, compiler: str) -> dict:
+        """
+        Invoke `python3 <compiler> <src>` and capture returncode, stdout, stderr,
+        then list any generated .asm/.int files.
+        """
+        try:
+            p = subprocess.run(
+                ["python3", compiler, src.name],
+                cwd=student_folder,
+                capture_output=True, text=True,
+                timeout=self.timeout
+            )
+            rc, out, err = p.returncode, p.stdout, p.stderr
+        except subprocess.TimeoutExpired as e:
+            rc, out, err = -1, e.stdout or "", (e.stderr or "") + "\nTIMEOUT"
 
-        out_file = self.results_dir / f"compiler_output_{folder.name}.json"
-        out_file.write_text(json.dumps(results, indent=2), encoding="utf-8")
-        return {"student": folder.name, "output_file": str(out_file)}
+        outputs = [
+            f.name
+            for pat in ("*.asm", "*.int")
+            for f in student_folder.glob(pat)
+        ]
 
-    def execute_all(self) -> dict[str, str]:
-        summary = {}
-        for folder in self.root.iterdir():
-            if not folder.is_dir() or folder.name == self.results_dir.name:
-                continue
-            res = self._run_one(folder)
-            student = res["student"]
-            summary[student] = res.get("output_file", f"ERROR: {res.get('error')}")
-        return summary
+        return {
+            "file": src.name,
+            "returncode": rc,
+            "stdout": out.strip(),
+            "stderr": err.strip(),
+            "outputs": outputs,
+        }
+
+    def write_report(self, student_folder: Path, report: list[dict]) -> str:
+        """
+        Dump one JSON per student under results/compiler_results/
+        """
+        out_dir = student_folder.parent / "results" / self.result_subdir
+        out_file = out_dir / f"{self.service_name}_output_{student_folder.name}.json"
+        out_file.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        return str(out_file)

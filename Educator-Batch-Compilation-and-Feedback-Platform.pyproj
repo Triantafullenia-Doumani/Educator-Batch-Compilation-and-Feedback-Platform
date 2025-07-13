@@ -23,21 +23,38 @@
   <ItemGroup>
     <Compile Include="Educator_Batch_Compilation_and_Feedback_Platform.py" />
     <Compile Include="main.py" />
+    <Compile Include="src\controllers\asm_controller.py" />
+    <Compile Include="src\controllers\asm_worker.py" />
     <Compile Include="src\controllers\batch_controller.py" />
     <Compile Include="src\controllers\batch_worker.py" />
     <Compile Include="src\controllers\buttons_controller.py" />
+    <Compile Include="src\controllers\int_controller.py" />
+    <Compile Include="src\controllers\int_worker.py" />
+    <Compile Include="src\controllers\plagiarism_controller.py" />
     <Compile Include="src\controllers\__init__.py" />
+    <Compile Include="src\services\asm_service.py" />
+    <Compile Include="src\services\asm_stats_service.py" />
     <Compile Include="src\services\batch_service.py" />
     <Compile Include="src\services\batch_stats_service.py" />
+    <Compile Include="src\services\int_service.py" />
+    <Compile Include="src\services\int_stats_service.py" />
+    <Compile Include="src\services\int_to_c_translator.py" />
+    <Compile Include="src\services\plagiarism_service.py" />
+    <Compile Include="src\services\stats_saver.py" />
     <Compile Include="src\services\__init__.py" />
+    <Compile Include="src\utils\cygwin_path.py" />
+    <Compile Include="src\utils\perl_path.py" />
     <Compile Include="src\views\buttons.py" />
     <Compile Include="src\views\main_window.py" />
+    <Compile Include="src\views\show_stats.py" />
     <Compile Include="src\views\__init__.py" />
     <Compile Include="src\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\" />
+    <Folder Include="scripts\" />
     <Folder Include="results\" />
+    <Folder Include="src\utils\" />
     <Folder Include="styles\" />
     <Folder Include="src\" />
     <Folder Include="src\controllers\" />
@@ -46,7 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="config.json" />
+    <Content Include="scripts\moss" />
     <Content Include="lib\rars_46ab74d.jar" />
+    <Content Include="src\controllers\diagram.puml" />
+    <Content Include="src\controllers\plantuml-mit-1.2025.3.jar" />
     <Content Include="styles\style.qss" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
