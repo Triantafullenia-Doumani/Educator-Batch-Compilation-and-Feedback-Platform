@@ -1,0 +1,16 @@
+[
+  {
+    "file": "microTest.cpy",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "outputs": []
+  },
+  {
+    "file": "test.cpy",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "outputs": []
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "test1.cpy",
+    "returncode": 1,
+    "stdout": "Error: Invalid character\nLine: 1:1",
+    "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200005\\cpyCompiler.py\", line 1174, in <module>\n    syntax.startRule()\n  File \"C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200005\\cpyCompiler.py\", line 369, in startRule\n    raise Exception(f\"Syntax error: expected #def, #int, or def received '{self.currentToken.token}' token number '{self.tokenIndex}'\")\nException: Syntax error: expected #def, #int, or def received 'Date' token number '0'",
+    "outputs": []
+  },
+  {
+    "file": "test2.cpy",
+    "returncode": 1,
+    "stdout": "Error: Invalid character\nLine: 1:1",
+    "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200005\\cpyCompiler.py\", line 1174, in <module>\n    syntax.startRule()\n  File \"C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200005\\cpyCompiler.py\", line 369, in startRule\n    raise Exception(f\"Syntax error: expected #def, #int, or def received '{self.currentToken.token}' token number '{self.tokenIndex}'\")\nException: Syntax error: expected #def, #int, or def received 'Date' token number '0'",
+    "outputs": []
+  },
+  {
+    "file": "test3.cpy",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Variable  not found",
+    "outputs": []
+  },
+  {
+    "file": "test4.cpy",
+    "returncode": 1,
+    "stdout": "Error: Invalid character\nLine: 1:1",
+    "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200005\\cpyCompiler.py\", line 1174, in <module>\n    syntax.startRule()\n  File \"C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200005\\cpyCompiler.py\", line 369, in startRule\n    raise Exception(f\"Syntax error: expected #def, #int, or def received '{self.currentToken.token}' token number '{self.tokenIndex}'\")\nException: Syntax error: expected #def, #int, or def received 'Date' token number '0'",
+    "outputs": []
+  }
+]

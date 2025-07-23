@@ -124,7 +124,7 @@ class ButtonsView(QWidget):
 
         exts = self.ext_input.text().split()
         workers = self.workers_input.value()
-        self._run_start_time = time.time()  # <-- Start timer here
+        self._run_start_time = time.time() 
         self.run_requested.emit(d, exts, workers)
     
     def _on_run_asm(self):
@@ -139,7 +139,7 @@ class ButtonsView(QWidget):
         self.run_int_btn.setEnabled(False)
 
         workers = self.workers_input.value()
-        self._run_start_time = time.time()    # <-- Start timer here!
+        self._run_start_time = time.time()   
         self.run_asm_requested.emit(self.submissions_dir, workers)
     
 

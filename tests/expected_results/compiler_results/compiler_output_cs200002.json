@@ -1,0 +1,72 @@
+[
+  {
+    "file": "finalCodeExampleTest.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(finalCodeExampleTest.cpy).asm",
+      "intermediate-for-(finalCodeExampleTest.cpy).int"
+    ]
+  },
+  {
+    "file": "ifWhileTest.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(ifWhileTest.cpy).asm",
+      "intermediate-for-(ifWhileTest.cpy).int"
+    ]
+  },
+  {
+    "file": "limitsTest.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(limitsTest.cpy).asm",
+      "intermediate-for-(limitsTest.cpy).int"
+    ]
+  },
+  {
+    "file": "moreThanOneDeclarationsTest.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(moreThanOneDeclarationsTest.cpy).asm",
+      "intermediate-for-(moreThanOneDeclarationsTest.cpy).int"
+    ]
+  },
+  {
+    "file": "onlyMainTest.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(onlyMainTest.cpy).asm",
+      "intermediate-for-(onlyMainTest.cpy).int"
+    ]
+  },
+  {
+    "file": "smallTest.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(smallTest.cpy).asm",
+      "intermediate-for-(smallTest.cpy).int"
+    ]
+  },
+  {
+    "file": "test.cpy",
+    "returncode": 0,
+    "stdout": "Compilation is completed",
+    "stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1374: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t0, \"+str(quad[1])+\"\\n\"\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200002\\cpy.py:1383: SyntaxWarning: invalid escape sequence '\\m'\n  finalCode += \"\\muli t1, \"+str(quad[2])+\"\\n\"",
+    "outputs": [
+      "assembly-for-(test.cpy).asm",
+      "intermediate-for-(test.cpy).int"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+0: jump _ _ main
+1: begin_block main _ _
+2: inp i _ _
+3: halt _ _ _
+4: end_block main _ _

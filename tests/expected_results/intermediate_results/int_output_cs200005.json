@@ -1,0 +1,13 @@
+[
+  {
+    "int_file": "quadruples.int",
+    "c_file": "quadruples.c",
+    "status": "OK",
+    "compile_returncode": 0,
+    "compile_stdout": "",
+    "compile_stderr": "",
+    "exec_returncode": 0,
+    "exec_stdout": "",
+    "exec_stderr": ""
+  }
+]

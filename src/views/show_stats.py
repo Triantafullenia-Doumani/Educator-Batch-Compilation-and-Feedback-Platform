@@ -16,9 +16,10 @@ class StatsTableAdapter:
             "keys":    ["total source files", "successful"]
         },
         "assembly": {
-            "columns": ["User", "Total asm files", "Successful", "Error", "Timeout"],
-            "keys":    ["total asm files", "successful", "error", "timeout"]
-        },
+        "columns": ["User", "Total asm files", "Successful", "Simulation Error", "Timeout", ],
+        "keys":    ["total asm files", "successful", "simulation error", "timeout", ]
+        }
+,
         "intermediate": {
             "columns": ["User", "Total .int files", "Successful / Total"],
             "keys":    ["total int files", "successful"]

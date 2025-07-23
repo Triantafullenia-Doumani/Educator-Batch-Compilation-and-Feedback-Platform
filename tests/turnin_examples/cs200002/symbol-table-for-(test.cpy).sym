@@ -1,0 +1,176 @@
+---------------------------------SYMBOL TABLE---------------------------------
+Scope 0:
+Entities:
+	Entity 1:
+	Name: counterFunctionCalls,	Offset: 16
+	Entity 2:
+	Name: x,	Offset: 24
+	Entity 3:
+	Name: y,	Offset: 28
+	Entity 4:
+	Name: z,	Offset: 32
+	Entity 5:
+	Name: max3,	Frame Length: 20,	Arguments:['x', 'y', 'z']
+
+Scope 1:
+Entities:
+	Entity 1:
+	Name: m,	Offset: 36
+	Entity 2:
+	Name: counterFunctionCalls,	Offset: 40
+	Entity 3:
+	Name: T_1,	Offset: 44
+	Entity 4:
+	Name: x,	Offset: 28
+	Entity 5:
+	Name: fib,	Frame Length: 24,	Arguments:['x']
+
+Scope 2:
+Entities:
+	Entity 1:
+	Name: counterFunctionCalls,	Offset: 32
+	Entity 2:
+	Name: T_2,	Offset: 36
+	Entity 3:
+	Name: T_3,	Offset: 40
+	Entity 4:
+	Name: T_4,	Offset: 44
+	Entity 5:
+	Name: T_4,	Offset: 48
+	Entity 6:
+	Name: T_5,	Offset: 52
+	Entity 7:
+	Name: T_6,	Offset: 56
+	Entity 8:
+	Name: T_6,	Offset: 60
+	Entity 9:
+	Name: T_7,	Offset: 64
+	Entity 10:
+	Name: T_8,	Offset: 68
+	Entity 11:
+	Name: x,	Offset: 32
+	Entity 12:
+	Name: isPrime,	Frame Length: 28,	Arguments:['x']
+
+Scope 3:
+Entities:
+	Entity 1:
+	Name: i,	Offset: 36
+	Entity 2:
+	Name: x,	Offset: 44
+	Entity 3:
+	Name: y,	Offset: 48
+	Entity 4:
+	Name: divides,	Frame Length: 40,	Arguments:['x', 'y']
+
+Scope 4:
+Entities:
+	Entity 1:
+	Name: counterFunctionCalls,	Offset: 52
+	Entity 2:
+	Name: T_9,	Offset: 56
+	Entity 3:
+	Name: T_10,	Offset: 60
+	Entity 4:
+	Name: T_11,	Offset: 64
+	Entity 5:
+	Name: counterFunctionCalls,	Offset: 44
+	Entity 6:
+	Name: T_12,	Offset: 48
+	Entity 7:
+	Name: i,	Offset: 52
+	Entity 8:
+	Name: x,	Offset: 56
+	Entity 9:
+	Name: T_13,	Offset: 60
+	Entity 10:
+	Name: T_14,	Offset: 64
+	Entity 11:
+	Name: x,	Offset: 36
+	Entity 12:
+	Name: quad,	Frame Length: 32,	Arguments:['x']
+
+Scope 5:
+Entities:
+	Entity 1:
+	Name: y,	Offset: 40
+	Entity 2:
+	Name: x,	Offset: 48
+	Entity 3:
+	Name: sqr,	Frame Length: 44,	Arguments:['x']
+
+Scope 6:
+Entities:
+	Entity 1:
+	Name: counterFunctionCalls,	Offset: 52
+	Entity 2:
+	Name: T_15,	Offset: 56
+	Entity 3:
+	Name: T_16,	Offset: 60
+	Entity 4:
+	Name: counterFunctionCalls,	Offset: 48
+	Entity 5:
+	Name: T_17,	Offset: 52
+	Entity 6:
+	Name: x,	Offset: 56
+	Entity 7:
+	Name: T_18,	Offset: 60
+	Entity 8:
+	Name: x,	Offset: 64
+	Entity 9:
+	Name: T_19,	Offset: 68
+	Entity 10:
+	Name: T_20,	Offset: 72
+	Entity 11:
+	Name: year,	Offset: 40
+	Entity 12:
+	Name: leap,	Frame Length: 36,	Arguments:['year']
+
+Scope 7:
+Entities:
+	Entity 1:
+	Name: counterFunctionCalls,	Offset: 44
+	Entity 2:
+	Name: T_21,	Offset: 48
+	Entity 3:
+	Name: T_22,	Offset: 52
+	Entity 4:
+	Name: T_23,	Offset: 56
+	Entity 5:
+	Name: T_24,	Offset: 60
+
+Scope 8:
+Entities:
+	Entity 1:
+	Name: main,	Frame Length: 40,	Arguments:[]
+	Entity 2:
+	Name: i,	Offset: 44
+	Entity 3:
+	Name: i,	Offset: 48
+	Entity 4:
+	Name: T_25,	Offset: 52
+	Entity 5:
+	Name: T_26,	Offset: 56
+	Entity 6:
+	Name: 2023,	Offset: 60
+	Entity 7:
+	Name: T_27,	Offset: 64
+	Entity 8:
+	Name: 2024,	Offset: 68
+	Entity 9:
+	Name: T_28,	Offset: 72
+	Entity 10:
+	Name: 3,	Offset: 76
+	Entity 11:
+	Name: T_29,	Offset: 80
+	Entity 12:
+	Name: 5,	Offset: 84
+	Entity 13:
+	Name: T_30,	Offset: 88
+	Entity 14:
+	Name: i,	Offset: 92
+	Entity 15:
+	Name: T_31,	Offset: 96
+	Entity 16:
+	Name: T_32,	Offset: 100
+

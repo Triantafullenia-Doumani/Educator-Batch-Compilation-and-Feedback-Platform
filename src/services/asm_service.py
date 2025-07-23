@@ -12,15 +12,21 @@ class AsmService:
         self.timeout = timeout
 
     def interpret_status(self, rc, out, err):
-        if "TIMEOUT" in (err or ""):
-            return "TIMEOUT"
-        if "Error in" in (out or ""):
+        out = (out or "").lower()
+        err = (err or "").lower()
+
+
+        if "error in" in out or "error in" in err:
             return "SIMULATION ERROR"
+        if "timeout" in err:
+            return "TIMEOUT"
         if rc == 0:
             return "OK"
         return "UNKNOWN"
 
-    def run_all(self, submissions_root: Path, workers: int = 4) -> dict[str, str]:
+
+
+    def run_all(self, submissions_root: Path, workers) -> dict[str, str]:
         submissions_root = Path(submissions_root)
         out_dir = submissions_root / "results" / self.result_subdir
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -59,25 +65,30 @@ class AsmService:
             cwd=str(folder),
             stdout=PIPE, stderr=PIPE, text=True
         )
+
         try:
             out, err = proc.communicate(timeout=self.timeout)
             rc = proc.returncode
         except TimeoutExpired:
             proc.kill()
             out, err = proc.communicate()
-            rc = -1
+            rc = 1
             err = (err or "") + "\nTIMEOUT"
 
         status = self.interpret_status(rc, out, err)
+
         return {
             "asm_file": asm_file.name,
             "status": status,
             "returncode": rc,
             "stdout": out or "",
-            "stderr": err.strip(),
+            "stderr": (err or "").strip(),
         }
 
+
     def write_report(self, student_folder: Path, report: list[dict]) -> str:
+        if not isinstance(report, list):
+            report = []
         out_dir = student_folder.parent / "results" / self.result_subdir
         out_file = out_dir / f"{self.service_name}_output_{student_folder.name}.json"
         out_file.write_text(json.dumps(report, indent=2), encoding="utf-8")

@@ -14,7 +14,6 @@ class IntWorker(QThread):
         self.workers = workers
 
     def run(self):
-        print("IntWorker running in thread:", self.currentThreadId())
         try:
             controller = IntController(
                 submissions_dir=self.submissions_dir,

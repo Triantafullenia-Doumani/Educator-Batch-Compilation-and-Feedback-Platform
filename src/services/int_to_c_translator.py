@@ -26,7 +26,8 @@ def write_to_c(filename, outfile, output_box=None):
     variables = []
 
     try:
-        fout = open(outfile, 'w')
+        fout = open(outfile, 'w', encoding='utf-8')
+
     except Exception as e:
         log(f"Error opening output file '{outfile}': {e}")
         return
@@ -128,7 +129,8 @@ def write_to_c(filename, outfile, output_box=None):
                 elif words[1] == '>=':
                     print('if (' + words[2] + ' >= ' + words[3] + ') goto L' + words[4] + ';', end='', file=fout)
                 elif words[1] == '>':
-                    print('if (' + words[2] + ' > ' + words[3] + ') goto L' + words[4] + ';', end='', file=fout)
+                    print('if (' + words[2] + 
+                          ' > ' + words[3] + ') goto L' + words[4] + ';', end='', file=fout)
                 elif words[1] == '<':
                     print('if (' + words[2] + ' < ' + words[3] + ') goto L' + words[4] + ';', end='', file=fout)
                 elif words[1] == 'out':

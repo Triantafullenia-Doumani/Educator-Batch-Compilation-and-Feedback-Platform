@@ -1,0 +1,41 @@
+Symbol table
+['max3', 1, [['x', 12, 'CV'], ['y', 16, 'CV'], ['z', 20, 'CV'], ['m', 24], ['counterFunctionCalls', 'globals_locally'], ['T_1', 28]], 32]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32]], 16]
+
+
+Symbol table
+['fib', 1, [['x', 12, 'CV'], ['counterFunctionCalls', 'globals_locally'], ['T_2', 16], ['T_3', 20], ['T_4', 24], ['T_5', 28], ['T_6', 32], ['T_7', 36]], 40]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40]], 16]
+
+
+Symbol table
+['divides', 2, [['x', 12, 'CV'], ['y', 16, 'CV'], ['counterFunctionCalls', 'globals_locally'], ['T_8', 20], ['T_9', 24], ['T_10', 28]], 32]
+['isPrime', 1, [['x', 12, 'CV'], ['i', 16], ['divides', 'function', 42, 32]], 20]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40], ['isPrime', 'function']], 16]
+
+
+Symbol table
+['isPrime', 1, [['x', 12, 'CV'], ['i', 16], ['divides', 'function', 42, 32], ['counterFunctionCalls', 'globals_locally'], ['T_11', 20], ['T_12', 24], ['T_13', 28]], 32]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40], ['isPrime', 'function', 53, 32]], 16]
+
+
+Symbol table
+['sqr', 2, [['x', 12, 'CV'], ['counterFunctionCalls', 'globals_locally'], ['T_14', 16], ['T_15', 20]], 24]
+['quad', 1, [['x', 12, 'CV'], ['y', 16], ['sqr', 'function', 72, 24]], 20]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40], ['isPrime', 'function', 53, 32], ['quad', 'function']], 16]
+
+
+Symbol table
+['quad', 1, [['x', 12, 'CV'], ['y', 16], ['sqr', 'function', 72, 24], ['counterFunctionCalls', 'globals_locally'], ['T_16', 20], ['T_17', 24], ['T_18', 28], ['T_19', 32]], 36]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40], ['isPrime', 'function', 53, 32], ['quad', 'function', 78, 36]], 16]
+
+
+Symbol table
+['leap', 1, [['year', 12, 'CV'], ['counterFunctionCalls', 'globals_locally'], ['T_20', 16], ['T_21', 20], ['T_22', 24], ['T_23', 28]], 32]
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40], ['isPrime', 'function', 53, 32], ['quad', 'function', 78, 36], ['leap', 'function', 91, 32]], 16]
+
+
+Symbol table
+['main', 0, [['counterFunctionCalls', 12], ['max3', 'function', 0, 32], ['fib', 'function', 18, 40], ['isPrime', 'function', 53, 32], ['quad', 'function', 78, 36], ['leap', 'function', 91, 32], ['i', 16], ['T_24', 20], ['T_25', 24], ['T_26', 28], ['T_27', 32], ['T_28', 36], ['T_29', 40], ['T_30', 44], ['T_31', 48]], 52]
+
+

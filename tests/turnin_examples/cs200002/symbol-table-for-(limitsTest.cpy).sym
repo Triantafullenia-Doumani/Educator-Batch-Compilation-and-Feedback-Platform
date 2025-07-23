@@ -1,0 +1,13 @@
+---------------------------------SYMBOL TABLE---------------------------------
+Scope 0:
+Entities:
+	Entity 1:
+	Name: counterFunctionCalls1234567890,	Offset: 16
+
+Scope 1:
+Entities:
+	Entity 1:
+	Name: main,	Frame Length: 20,	Arguments:[]
+	Entity 2:
+	Name: i,	Offset: 24
+

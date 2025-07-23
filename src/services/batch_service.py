@@ -77,27 +77,30 @@ class BatchService:
         for src in sources:
             results.append(self.run_file(student_folder, src, compiler))
         return results
-
+    
     def run_file(self, student_folder: Path, src: Path, compiler: str) -> dict:
-        """
-        Invoke `python3 <compiler> <src>` and capture returncode, stdout, stderr,
-        then list any generated .asm/.int files.
-        """
         try:
             p = subprocess.run(
                 ["python3", compiler, src.name],
                 cwd=student_folder,
-                capture_output=True, text=True,
+                capture_output=True,
+                text=True,
                 timeout=self.timeout
             )
             rc, out, err = p.returncode, p.stdout, p.stderr
         except subprocess.TimeoutExpired as e:
-            rc, out, err = -1, e.stdout or "", (e.stderr or "") + "\nTIMEOUT"
+            rc = 1
+            out = e.stdout or ""
+            err = e.stderr or ""
+
+        expected_outputs = [
+            f"assembly-for-({src.name}).asm",
+            f"intermediate-for-({src.name}).int"
+        ]
 
         outputs = [
-            f.name
-            for pat in ("*.asm", "*.int")
-            for f in student_folder.glob(pat)
+            f.name for f in student_folder.iterdir()
+            if f.name in expected_outputs
         ]
 
         return {
@@ -105,8 +108,10 @@ class BatchService:
             "returncode": rc,
             "stdout": out.strip(),
             "stderr": err.strip(),
-            "outputs": outputs,
+            "outputs": outputs
         }
+
+
 
     def write_report(self, student_folder: Path, report: list[dict]) -> str:
         """

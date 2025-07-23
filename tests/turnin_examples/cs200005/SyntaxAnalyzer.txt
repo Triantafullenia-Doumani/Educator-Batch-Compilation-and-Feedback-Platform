@@ -1,0 +1,1 @@
+Syntax analysis of the file: test4.cpy 

@@ -1,0 +1,47 @@
+---------------------------------SYMBOL TABLE---------------------------------
+Scope 0:
+Entities:
+	Entity 1:
+	Name: A,	Offset: 16
+	Entity 2:
+	Name: B,	Offset: 20
+	Entity 3:
+	Name: C,	Offset: 24
+	Entity 4:
+	Name: a,	Offset: 32
+	Entity 5:
+	Name: b,	Offset: 36
+	Entity 6:
+	Name: proc,	Frame Length: 28,	Arguments:['a', 'b']
+
+Scope 1:
+Entities:
+	Entity 1:
+	Name: c,	Offset: 40
+	Entity 2:
+	Name: S,	Offset: 48
+	Entity 3:
+	Name: func,	Frame Length: 44,	Arguments:['S']
+
+Scope 2:
+Entities:
+	Entity 1:
+	Name: d,	Offset: 52
+	Entity 2:
+	Name: T_1,	Offset: 56
+	Entity 3:
+	Name: 2,	Offset: 48
+	Entity 4:
+	Name: T_2,	Offset: 52
+
+Scope 3:
+Entities:
+	Entity 1:
+	Name: main,	Frame Length: 32,	Arguments:[]
+	Entity 2:
+	Name: A,	Offset: 36
+	Entity 3:
+	Name: B,	Offset: 40
+	Entity 4:
+	Name: T_3,	Offset: 44
+

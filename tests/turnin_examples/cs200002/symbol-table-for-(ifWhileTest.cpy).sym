@@ -1,0 +1,19 @@
+---------------------------------SYMBOL TABLE---------------------------------
+Scope 0:
+Entities:
+	Entity 1:
+	Name: c,	Offset: 16
+	Entity 2:
+	Name: a,	Offset: 20
+	Entity 3:
+	Name: b,	Offset: 24
+	Entity 4:
+	Name: t,	Offset: 28
+
+Scope 1:
+Entities:
+	Entity 1:
+	Name: main,	Frame Length: 32,	Arguments:[]
+	Entity 2:
+	Name: T_1,	Offset: 36
+

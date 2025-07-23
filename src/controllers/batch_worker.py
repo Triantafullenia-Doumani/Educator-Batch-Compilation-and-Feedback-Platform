@@ -12,7 +12,6 @@ class BatchWorker(QThread):
         self.workers = workers
 
     def run(self):
-        print("BatchWorker running in thread:", self.currentThreadId())
         try:
             controller = BatchController(self.submissions_dir, self.exts, self.workers)
             results = controller.run()

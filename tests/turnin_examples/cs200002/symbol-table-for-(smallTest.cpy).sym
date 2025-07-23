@@ -1,0 +1,57 @@
+---------------------------------SYMBOL TABLE---------------------------------
+Scope 0:
+Entities:
+	Entity 1:
+	Name: b,	Offset: 16
+	Entity 2:
+	Name: g,	Offset: 20
+	Entity 3:
+	Name: f,	Offset: 24
+	Entity 4:
+	Name: X,	Offset: 32
+	Entity 5:
+	Name: Y,	Offset: 36
+	Entity 6:
+	Name: P1,	Frame Length: 28,	Arguments:['X', 'Y']
+
+Scope 1:
+Entities:
+	Entity 1:
+	Name: e,	Offset: 40
+	Entity 2:
+	Name: f,	Offset: 44
+	Entity 3:
+	Name: X,	Offset: 52
+	Entity 4:
+	Name: P11,	Frame Length: 48,	Arguments:['X']
+
+Scope 2:
+Entities:
+	Entity 1:
+	Name: e,	Offset: 56
+	Entity 2:
+	Name: X,	Offset: 52
+	Entity 3:
+	Name: T_1,	Offset: 56
+	Entity 4:
+	Name: X,	Offset: 60
+	Entity 5:
+	Name: Y,	Offset: 64
+	Entity 6:
+	Name: T_2,	Offset: 68
+
+Scope 3:
+Entities:
+	Entity 1:
+	Name: main,	Frame Length: 32,	Arguments:[]
+	Entity 2:
+	Name: T_3,	Offset: 36
+	Entity 3:
+	Name: T_4,	Offset: 40
+	Entity 4:
+	Name: g,	Offset: 44
+	Entity 5:
+	Name: b,	Offset: 48
+	Entity 6:
+	Name: T_5,	Offset: 52
+

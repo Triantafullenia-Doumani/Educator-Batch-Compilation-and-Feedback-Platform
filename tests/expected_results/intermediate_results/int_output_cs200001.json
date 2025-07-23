@@ -1,0 +1,13 @@
+[
+  {
+    "int_file": "intfile.int",
+    "c_file": "intfile.c",
+    "status": "COMPILATION FAILED",
+    "compile_returncode": 1,
+    "compile_stdout": "",
+    "compile_stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200001\\c\\intfile.c: In function 'main':\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200001\\c\\intfile.c:6:1: error: expected declaration or statement at end of input\n    6 | L1:\n      | ^~",
+    "exec_returncode": null,
+    "exec_stdout": "",
+    "exec_stderr": ""
+  }
+]

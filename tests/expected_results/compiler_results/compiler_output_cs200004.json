@@ -1,0 +1,9 @@
+[
+  {
+    "file": "test.cpy",
+    "returncode": 1,
+    "stdout": "Please enter the name of your program:",
+    "stderr": "",
+    "outputs": []
+  }
+]

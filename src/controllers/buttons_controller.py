@@ -107,7 +107,6 @@ class ButtonsController(QObject):
 
     # --- UPDATED: now expects workers param from signal ---
     def handle_run_int(self, submissions_dir, workers):
-        print("handle_run_int CALLED")
         self.view.clear_stats_table()
         self.view.results_view.clear()
         self.view.show_wait_dialog()

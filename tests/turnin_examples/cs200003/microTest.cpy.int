@@ -1,0 +1,16 @@
+0:begin block,main,_,_
+1::=,0,_,counterFunctionCalls
+2::=,4,_,i
+3:out,counterFunctionCalls,_,_
+4:out,i,_,_
+5:+,i,2,T_1
+6::=,T_1,_,i
+7:out,i,_,_
+8:*,i,3,T_2
+9:-,T_2,5,T_3
+10::=,T_3,_,counterFunctionCalls
+11:out,counterFunctionCalls,_,_
+12:%,counterFunctionCalls,3,T_4
+13:out,T_4,_,_
+14:halt,_,_,_
+15:end block,main,_,_

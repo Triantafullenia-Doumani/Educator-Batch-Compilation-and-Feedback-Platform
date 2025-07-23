@@ -1,0 +1,24 @@
+[
+  {
+    "int_file": "microTest.cpy.int",
+    "c_file": "microTest.cpy.c",
+    "status": "COMPILATION FAILED",
+    "compile_returncode": 1,
+    "compile_stdout": "",
+    "compile_stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200003\\c\\microTest.cpy.c: In function 'main':\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200003\\c\\microTest.cpy.c:11:1: error: expected declaration or statement at end of input\n   11 | L0:\n      | ^~",
+    "exec_returncode": null,
+    "exec_stdout": "",
+    "exec_stderr": ""
+  },
+  {
+    "int_file": "test.cpy.int",
+    "c_file": "test.cpy.c",
+    "status": "COMPILATION FAILED",
+    "compile_returncode": 1,
+    "compile_stdout": "",
+    "compile_stderr": "C:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200003\\c\\test.cpy.c: In function 'main':\nC:\\Users\\filit\\Documents\\ptuxiaki-2025\\turnin_examples\\cs200003\\c\\test.cpy.c:34:1: error: expected declaration or statement at end of input\n   34 | L0:\n      | ^~",
+    "exec_returncode": null,
+    "exec_stdout": "",
+    "exec_stderr": ""
+  }
+]

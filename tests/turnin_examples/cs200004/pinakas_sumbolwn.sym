@@ -1,0 +1,106 @@
+SCOPE: max3
+Nesting Level: 1
+	Entities:
+	x	par	CV	12
+	y	par	CV	16
+	z	par	CV	20
+	m	var	Int	24
+	counterFunctionCalls	var	Int	28
+	T_1	temp	Int	32
+SCOPE: fib
+Nesting Level: 1
+	Entities:
+	x	par	CV	12
+	counterFunctionCalls	var	Int	16
+	T_2	temp	Int	20
+	T_3	temp	Int	24
+	T_4	temp	Int	28
+	T_5	temp	Int	32
+	T_6	temp	Int	36
+	T_7	temp	Int	40
+SCOPE: divides
+Nesting Level: 2
+	Entities:
+	x	par	CV	12
+	y	par	CV	16
+	counterFunctionCalls	var	Int	20
+	T_8	temp	Int	24
+	T_9	temp	Int	28
+	T_10	temp	Int	32
+SCOPE: isPrime
+Nesting Level: 1
+	Entities:
+	x	par	CV	12
+	i	var	Int	16
+	divides	func		43	36
+		Arguments:
+		x	Int	CV
+		y	Int	CV
+	counterFunctionCalls	var	Int	20
+	T_11	temp	Int	24
+	T_12	temp	Int	28
+	T_13	temp	Int	32
+SCOPE: sqr
+Nesting Level: 2
+	Entities:
+	x	par	CV	12
+	counterFunctionCalls	var	Int	16
+	T_14	temp	Int	20
+	T_15	temp	Int	24
+SCOPE: quad
+Nesting Level: 1
+	Entities:
+	x	par	CV	12
+	y	var	Int	16
+	sqr	func		73	28
+		Arguments:
+		x	Int	CV
+	counterFunctionCalls	var	Int	20
+	T_16	temp	Int	24
+	T_17	temp	Int	28
+	T_18	temp	Int	32
+	T_19	temp	Int	36
+SCOPE: leap
+Nesting Level: 1
+	Entities:
+	year	par	CV	12
+	counterFunctionCalls	var	Int	16
+	T_20	temp	Int	20
+	T_21	temp	Int	24
+	T_22	temp	Int	28
+	T_23	temp	Int	32
+SCOPE: main
+Nesting Level: 1
+	Entities:
+	i	var	Int	12
+	T_24	temp	Int	16
+	T_25	temp	Int	20
+	T_26	temp	Int	24
+	T_27	temp	Int	28
+	T_28	temp	Int	32
+	T_29	temp	Int	36
+	T_30	temp	Int	40
+	T_31	temp	Int	44
+	T_32	temp	Int	48
+SCOPE: test.cpy
+Nesting Level: 0
+	Entities:
+	counterFunctionCalls	var	Int	12
+	max3	func		1	36
+		Arguments:
+		x	Int	CV
+		y	Int	CV
+		z	Int	CV
+	fib	func		19	44
+		Arguments:
+		x	Int	CV
+	isPrime	func		54	36
+		Arguments:
+		x	Int	CV
+	quad	func		79	40
+		Arguments:
+		x	Int	CV
+	leap	func		92	36
+		Arguments:
+		year	Int	CV
+	main	main		108	52

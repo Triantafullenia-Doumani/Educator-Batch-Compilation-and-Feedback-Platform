@@ -1,22 +1,19 @@
 import json
-
 from pathlib import Path
 
 class AsmStatsService:
     """
-    Service to process results/assembly_results/runner_output_*.json files
+    Service to process results/assembly_results/asm_output_*.json files
     and provide execution statistics per student.
     """
 
     def __init__(self, results_folder: Path):
         self.results_folder = Path(results_folder)
 
-
     def gather_stats(self):
-        print("gather_stats CALLED")
         stats = {}
+
         for file in self.results_folder.glob("asm_output_*.json"):
-            print(f"Processing stats file: {file}")
             try:
                 with open(file, encoding="utf-8") as f:
                     data = json.load(f)
@@ -24,26 +21,29 @@ class AsmStatsService:
                 print(f"Error reading {file}: {e}")
                 continue
 
-            student = file.stem.split("_")[-1]  
+            student = file.stem.split("_")[-1]
             total_files = len(data)
 
-            successful = sum(
-                res.get("status") == "OK" and res.get("returncode") == 0
-                for res in data
-            )
-            errors = sum(
-                res.get("status") == "SIMULATION ERROR" and res.get("returncode") == 0
-                for res in data
-            )
-            timeouts = sum(
-                res.get("status") == "TIMEOUT" and res.get("returncode") == -1
-                for res in data
-            )
+            counts = {
+                "OK": 0,
+                "SIMULATION ERROR": 0,
+                "TIMEOUT": 0,
+                "CRASH": 0,
+                "UNKNOWN": 0,
+            }
+
+            for res in data:
+                status = res.get("status", "UNKNOWN").upper()
+                if status in counts:
+                    counts[status] += 1
+                else:
+                    counts["UNKNOWN"] += 1
 
             stats[student] = {
                 "total asm files": total_files,
-                "successful": successful,
-                "error": errors,
-                "timeout": timeouts,
+                "successful": counts["OK"],
+                "simulation error": counts["SIMULATION ERROR"],
+                "timeout": counts["TIMEOUT"],
             }
+
         return stats

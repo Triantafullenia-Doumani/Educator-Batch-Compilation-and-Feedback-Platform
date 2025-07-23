@@ -1,0 +1,150 @@
+0:begin block,max3,_,_
+1:+,counterFunctionCalls,1,T_1
+2::=,T_1,_,counterFunctionCalls
+3:>,x,y,5
+4:jump,_,_,9
+5:>,x,z,7
+6:jump,_,_,9
+7::=,x,_,m
+8:jump,_,_,16
+9:>,y,x,11
+10:jump,_,_,15
+11:>,y,z,13
+12:jump,_,_,15
+13::=,y,_,m
+14:jump,_,_,16
+15::=,z,_,m
+16:retv,m,_,_
+17:end block,max3,_,_
+18:begin block,fib,_,_
+19:+,counterFunctionCalls,1,T_2
+20::=,T_2,_,counterFunctionCalls
+21:<,x,0,23
+22:jump,_,_,25
+23:retv,-1,_,_
+24:jump,_,_,41
+25:=,x,0,29
+26:jump,_,_,27
+27:=,x,1,29
+28:jump,_,_,31
+29:retv,1,_,_
+30:jump,_,_,41
+31:-,x,1,T_3
+32:par,T_3,CV,_
+33:par,T_4,RET,_
+34:call,fib,_,_
+35:-,x,2,T_5
+36:par,T_5,CV,_
+37:par,T_6,RET,_
+38:call,fib,_,_
+39:+,T_4,T_6,T_7
+40:retv,T_7,_,_
+41:end block,fib,_,_
+42:begin block,divides,_,_
+43:+,counterFunctionCalls,1,T_8
+44::=,T_8,_,counterFunctionCalls
+45:/,y,x,T_9
+46:*,T_9,x,T_10
+47:=,y,T_10,49
+48:jump,_,_,51
+49:retv,1,_,_
+50:jump,_,_,52
+51:retv,0,_,_
+52:end block,divides,_,_
+53:begin block,isPrime,_,_
+54:+,counterFunctionCalls,1,T_11
+55::=,T_11,_,counterFunctionCalls
+56::=,2,_,i
+57:<,i,x,59
+58:jump,_,_,70
+59:par,i,CV,_
+60:par,x,CV,_
+61:par,T_12,RET,_
+62:call,divides,_,_
+63:=,T_12,1,65
+64:jump,_,_,67
+65:retv,0,_,_
+66:jump,_,_,67
+67:+,i,1,T_13
+68::=,T_13,_,i
+69:jump,_,_,57
+70:retv,1,_,_
+71:end block,isPrime,_,_
+72:begin block,sqr,_,_
+73:+,counterFunctionCalls,1,T_14
+74::=,T_14,_,counterFunctionCalls
+75:*,x,x,T_15
+76:retv,T_15,_,_
+77:end block,sqr,_,_
+78:begin block,quad,_,_
+79:+,counterFunctionCalls,1,T_16
+80::=,T_16,_,counterFunctionCalls
+81:par,x,CV,_
+82:par,T_17,RET,_
+83:call,sqr,_,_
+84:par,x,CV,_
+85:par,T_18,RET,_
+86:call,sqr,_,_
+87:*,T_17,T_18,T_19
+88::=,T_19,_,y
+89:retv,y,_,_
+90:end block,quad,_,_
+91:begin block,leap,_,_
+92:+,counterFunctionCalls,1,T_20
+93::=,T_20,_,counterFunctionCalls
+94:%,year,4,T_21
+95:=,T_21,0,97
+96:jump,_,_,100
+97:%,year,100,T_22
+98:<>,T_22,0,103
+99:jump,_,_,100
+100:%,year,400,T_23
+101:=,T_23,0,103
+102:jump,_,_,105
+103:retv,1,_,_
+104:jump,_,_,106
+105:retv,0,_,_
+106:end block,leap,_,_
+107:begin block,main,_,_
+108::=,0,_,counterFunctionCalls
+109:inp,i,_,_
+110:out,i,_,_
+111::=,1600,_,i
+112:<=,i,2000,114
+113:jump,_,_,121
+114:par,i,CV,_
+115:par,T_24,RET,_
+116:call,leap,_,_
+117:out,T_24,_,_
+118:+,i,400,T_25
+119::=,T_25,_,i
+120:jump,_,_,112
+121:par,2023,CV,_
+122:par,T_26,RET,_
+123:call,leap,_,_
+124:out,T_26,_,_
+125:par,2024,CV,_
+126:par,T_27,RET,_
+127:call,leap,_,_
+128:out,T_27,_,_
+129:par,3,CV,_
+130:par,T_28,RET,_
+131:call,quad,_,_
+132:out,T_28,_,_
+133:par,5,CV,_
+134:par,T_29,RET,_
+135:call,fib,_,_
+136:out,T_29,_,_
+137::=,1,_,i
+138:<=,i,12,140
+139:jump,_,_,147
+140:par,i,CV,_
+141:par,T_30,RET,_
+142:call,isPrime,_,_
+143:out,T_30,_,_
+144:+,i,1,T_31
+145::=,T_31,_,i
+146:jump,_,_,138
+147:out,counterFunctionCalls,_,_
+148:halt,_,_,_
+149:end block,main,_,_

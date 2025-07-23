@@ -29,7 +29,7 @@ class IntService:
             for fut in as_completed(futures):
                 student = futures[fut].name
                 try:
-                    report = fut.result()  # ✅ actual list[dict]
+                    report = fut.result()  
                     path = self.write_report(futures[fut], report)
                     summary[student] = path
                 except Exception as e:
@@ -67,9 +67,10 @@ class IntService:
             }
 
         # compile
-        proc = Popen(["gcc", str(c_file), "-o", str(exe)],
-                     cwd=student_folder, stdout=PIPE, stderr=PIPE, text=True)
         try:
+            proc = Popen(["gcc", str(Path("c") / c_file.name), "-o", exe.name],
+             cwd=student_folder, stdout=PIPE, stderr=PIPE, text=True)
+
             comp_out, comp_err = proc.communicate(timeout=self.timeout)
             comp_rc = proc.returncode
         except TimeoutExpired:
@@ -116,6 +117,8 @@ class IntService:
             "exec_stdout": run_out.strip(),
             "exec_stderr": run_err.strip(),
         }
+
+
 
     def write_report(self, student_folder: Path, report: list[dict]) -> str:
         out_dir = student_folder.parent / "results" / self.result_subdir

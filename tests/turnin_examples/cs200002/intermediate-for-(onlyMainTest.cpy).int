@@ -1,0 +1,14 @@
+0: jump _ _ main
+1: begin_block main _ _
+2: := 0 _ counterFunctionCalls
+3: inp i _ _
+4: out i _ _
+5: := 1600 _ i
+6: <= i 2000 9
+7: jump _ _ 12
+8: + i 400 T_1
+9: := T_1 _ i
+10: jump _ _ 7
+11: out counterFunctionCalls _ _
+12: halt _ _ _
+13: end_block main _ _

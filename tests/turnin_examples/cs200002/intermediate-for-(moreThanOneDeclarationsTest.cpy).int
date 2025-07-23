@@ -1,0 +1,8 @@
+0: jump _ _ main
+1: begin_block main _ _
+2: := 0 _ counterFunctionCalls
+3: inp i _ _
+4: out i _ _
+5: out counterFunctionCalls _ _
+6: halt _ _ _
+7: end_block main _ _

@@ -14,8 +14,6 @@ class AsmController:
         self.workers = workers
 
     def run(self) -> dict:
-        print("[AsmController] run() called")
         svc = AsmService(runner_jar=self.jar_path, timeout=self.timeout)
         summary = svc.run_all(self.submissions_dir, workers=self.workers)
-        print("[AsmController] summary returned:", summary)
         return summary
