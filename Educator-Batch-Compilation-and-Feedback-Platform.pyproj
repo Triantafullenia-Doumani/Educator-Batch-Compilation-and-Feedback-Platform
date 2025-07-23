@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\" />
+    <Folder Include="docs\" />
     <Folder Include="tests\" />
     <Folder Include="scripts\" />
     <Folder Include="results\" />
@@ -89,6 +90,10 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="config.json" />
+    <Content Include="docs\base.png" />
+    <Content Include="docs\run_asm.png" />
+    <Content Include="docs\run_compilers.png" />
+    <Content Include="docs\run_int.png" />
     <Content Include="scripts\moss" />
     <Content Include="lib\rars_46ab74d.jar" />
     <Content Include="styles\style.qss" />
