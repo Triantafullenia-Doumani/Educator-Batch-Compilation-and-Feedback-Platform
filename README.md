@@ -47,7 +47,7 @@ python3 main.py
 
 This is the main interface of the application, where the instructor selects the folder containing student submissions, chooses the source file extension (e.g., .ci, .cpy), and runs the batch process. :exclamation: TODO: support .gr source files :exclamation:
 
-![Main Window](docs/base.png)
+![Main Window]() docs/base.png
 
 ---
 
@@ -55,7 +55,7 @@ This is the main interface of the application, where the instructor selects the 
 
 Clicking "Run" processes all student compilers and source files in batch mode.
 
-![Run Compilers](docs/run_compilers.png)
+![Run Compilers]() docs/run_compilers.png
 
 ---
 
@@ -63,7 +63,7 @@ Clicking "Run" processes all student compilers and source files in batch mode.
 
 After compilation, you can run each student’s intermediate files and view the output.
 
-![Run Intermediate](docs/run_int.png)
+![Run Intermediate]() docs/run_int.png
 
 ---
 
@@ -71,7 +71,7 @@ After compilation, you can run each student’s intermediate files and view the 
 
 Assembly files can also be executed, with support for interactive inputs where needed.
 
-![Run Assembly](docs/run_asm.png)
+![Run Assembly]() docs/run_asm.png
 
 ---
 
@@ -79,7 +79,7 @@ Assembly files can also be executed, with support for interactive inputs where n
 
 After any compilation or execution, you can click **Results** to open a folder with each student's output files and summaries.
 
-![Show Results](docs/show_results.png)
+![Show Results](docs/results.png)
 
 ---
 
@@ -87,7 +87,7 @@ After any compilation or execution, you can click **Results** to open a folder w
 
 The app also supports code similarity detection. You can run plagiarism checks and view a report comparing student files.
 
-![Check Plagiarism](docs/check_plagiarism.png)
+![Check Plagiarism](docs/plagiarism.png)
 
 ## 🗂️ Project Structure
 
