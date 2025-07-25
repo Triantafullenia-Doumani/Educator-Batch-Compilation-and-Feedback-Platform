@@ -59,7 +59,7 @@ results/
 .asm
 
 #scripts
-scripts/moss
+moss
 
 #configuration
 config.json
