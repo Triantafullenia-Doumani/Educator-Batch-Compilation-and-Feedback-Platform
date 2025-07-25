@@ -58,7 +58,7 @@ results/
 .int
 .asm
 
-#scripts
+#moss script
 moss
 
 #configuration
