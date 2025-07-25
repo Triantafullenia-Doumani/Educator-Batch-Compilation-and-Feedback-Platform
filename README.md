@@ -1,8 +1,7 @@
 # Educator Batch Compilation and Feedback Platform
 
-This is a desktop app made to help teachers check student programming assignments more easily. It runs each student’s compiler on test files, collects the results, and shows a summary of what worked and what didn’t. It can also check for plagiarism by comparing code between students.
+This is a desktop app made to help teachers check student programming assignments more easily. It runs each student’s compiler, processes the generated intermediate and assembly files, collects the results, and displays a summary of what worked and what didn’t. It can also check for plagiarism by comparing code between students.
 
-This project was created as part of a diploma thesis in the Department of Computer Science and Engineering at the University of Ioannina.
 
 ---
 
@@ -10,9 +9,8 @@ This project was created as part of a diploma thesis in the Department of Comput
 
 - 🔍 Finds each student's compiler and matching source files
 - 🧪 Runs the compiler on each source file one by one
-- 📁 Creates intermediate `.int` and assembly `.asm` files
-- 🖥️ Lets you run and test `.int` and `.asm` files from the app
-- 📊 Shows summaries for each student with success/failure info
+- 🖥️ Lets you run all `.int` and `.asm` files in one
+- 📊 Shows statistics for each student with success/failure info
 - 🕵️‍♂️ Compares student submissions to detect possible plagiarism
 - 🧵 Uses multithreading to handle many students at once
 - 🧪 Can be tested with `pytest`
@@ -43,16 +41,11 @@ cd batch-compilation-feedback
 python3 main.py
 ```
 
----
-## 🖼️ Application Screenshots
 
-Below are some screenshots showing how the application looks and works in action.
-
----
 
 ### 🏠 Main Window
 
-This is the main interface of the application, where the instructor selects the folder with student submissions and runs the batch process.
+This is the main interface of the application, where the instructor selects the folder containing student submissions, chooses the source file extension (e.g., .ci, .cpy), and runs the batch process. :exclamation: TODO: support .gr source files :exclamation:
 
 ![Main Window](docs/base.png)
 
@@ -80,6 +73,22 @@ Assembly files can also be executed, with support for interactive inputs where n
 
 ![Run Assembly](docs/run_asm.png)
 
+---
+
+### 📊 View Results
+
+After any compilation or execution, you can click **Results** to open a folder with each student's output files and summaries.
+
+![Show Results](docs/show_results.png)
+
+---
+
+### 🕵️‍♀️ Check for Plagiarism
+
+The app also supports code similarity detection. You can run plagiarism checks and view a report comparing student files.
+
+![Check Plagiarism](docs/check_plagiarism.png)
+
 ## 🗂️ Project Structure
 
 ```
@@ -92,7 +101,7 @@ TODO
 
 Each student folder must include:
 - A Python file (e.g., `compiler.py`) that acts as a compiler
-- One or more source files (e.g., `.ci`, `.cpy`) — IT'S NOT WORKING YET FOR .gr
+- One or more source files (e.g., `.ci`, `.cpy`) 
 
 The app runs:
 
